@@ -1,24 +1,60 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column          | Type   | Options     |
+| --------------- | ------ | ----------- |
+| nickname        | string | null: false |
+| password        | string | null: false |
+| first-name      | string | null: false |
+| last-name       | string | null: false |
+| first-name-kana | string | null: false |
+| last-name-kana  | string | null: false |
+| birth           | date   | null: false |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :products
+- has_many :buys
 
-* Configuration
+## products テーブル
 
-* Database creation
+| Column        | Type   | Options                       |
+| ------------- | ------ | ----------------------------- |
+| image         | string | null: false                   |
+| item-name     | string | null: false                   |
+| item-info     | string | null: false                   |
+| category      | string | null: false                   |
+| status        | string | null: false                   |
+| delivery-fee  | string | null: false                   |
+| area          | string | null: false                   |
+| shipping-days | string | null: false                   |
+| price         | string | null: false                   |
+| user          | string | null: false, foreign_key: true|
 
-* Database initialization
+### Association
 
-* How to run the test suite
+- belongs_to :user
+  belongs_to :buy
 
-* Services (job queues, cache servers, search engines, etc.)
+## buys テーブル
 
-* Deployment instructions
+| Column        | Type        | Options                        |
+| ------------- | ----------- | ------------------------------ |
+| card-num      | null: false | null: false                    |
+| exp-month     | null: false | null: false                    |
+| exp-year      | null: false | null: false                    |
+| security-code | null: false | null: false                    |
+| post-code     | null: false | null: false                    |
+| prefectures   | null: false | null: false                    |
+| city          | null: false | null: false                    |
+| building      | null: false | null: false                    |
+| phone         | null: false | null: false                    |
+| user          | null: false | null: false, foreign_key: true |
+| item-name     | null: false | null: false, foreign_key: true |
 
-* ...
+
+### Association
+
+- belongs_to :user
+- belongs_to :product

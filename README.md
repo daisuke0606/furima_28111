@@ -19,42 +19,49 @@
 
 ## products テーブル
 
-| Column        | Type   | Options                       |
-| ------------- | ------ | ----------------------------- |
-| image         | string | null: false                   |
-| item-name     | string | null: false                   |
-| item-info     | string | null: false                   |
-| category      | string | null: false                   |
-| status        | string | null: false                   |
-| delivery-fee  | string | null: false                   |
-| area          | string | null: false                   |
-| shipping-days | string | null: false                   |
-| price         | string | null: false                   |
-| user          | string | null: false, foreign_key: true|
+| Column                  | Type   | Options                       |
+| ----------------------- | ------ |------------------------------ |
+| image                   | string | null: false                   |
+| item-name               | string | null: false                   |
+| item-info               | text   | null: false                   |
+| category.genre_id       | integer| null: false                   |
+| status.genre_id         | integer| null: false                   |
+| delivery-fee.genre_id   | integer| null: false                   |
+| area.genre_id           | integer| null: false                   |
+| shipping-days.genre_id  | integer| null: false                   |
+| price                   | integer| null: false                   |
+| user                    | string | null: false, foreign_key: true|
 
 ### Association
 
 - belongs_to :user
-  belongs_to :buy
+- belongs_to :buy
 
 ## buys テーブル
 
-| Column        | Type        | Options                        |
-| ------------- | ----------- | ------------------------------ |
-| card-num      | null: false | null: false                    |
-| exp-month     | null: false | null: false                    |
-| exp-year      | null: false | null: false                    |
-| security-code | null: false | null: false                    |
-| post-code     | null: false | null: false                    |
-| prefectures   | null: false | null: false                    |
-| city          | null: false | null: false                    |
-| building      | null: false | null: false                    |
-| phone         | null: false | null: false                    |
-| user          | null: false | null: false, foreign_key: true |
-| item-name     | null: false | null: false, foreign_key: true |
+| Column        | Type   | Options                        |
+| ------------- | ------ | ------------------------------ |
+| post-code     | string | null: false                    |
+| prefectures   | string | null: false                    |
+| city          | string | null: false                    |
+| block         | string | null: false                    |
+| building      | string |                                |
+| phone         | string | null: false                    |
 
 
 ### Association
 
 - belongs_to :user
 - belongs_to :product
+
+
+##  managementテーブル
+
+| Column        | Type   | Options                        |
+| --------------| -------|--------------------------------|
+| user          | string | null: false, foreign_key: true |
+| item-name     | string | null: false, foreign_key: true |
+
+
+### Association
+- belongs_to :buys

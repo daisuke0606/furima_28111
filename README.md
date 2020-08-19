@@ -51,9 +51,7 @@
 
 ### Association
 
-- has_one :user
-- has_one :product
-- has_one :management
+- belongs_to :management
 
 
 
@@ -66,4 +64,6 @@
 
 
 ### Association
-- belongs_to :buys
+
+- belongs_to :user
+- belongs_to :products

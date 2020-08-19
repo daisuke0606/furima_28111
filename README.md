@@ -15,7 +15,7 @@
 ### Association
 
 - has_many :products
-- has_one :management
+- has_many :managements
 
 ## products テーブル
 

@@ -15,7 +15,7 @@
 ### Association
 
 - has_many :products
-- has_many :buys
+- has_one :management
 
 ## products テーブル
 
@@ -35,7 +35,7 @@
 ### Association
 
 - belongs_to :user
-- has_one :address
+- has_one :management
 
 ## address テーブル
 
@@ -60,7 +60,7 @@
 | Column        | Type       | Options                        |
 | --------------| ---------- |--------------------------------|
 | user          | references | null: false, foreign_key: true |
-| item_name     | references | null: false, foreign_key: true |
+| product       | references | null: false, foreign_key: true |
 
 
 ### Association

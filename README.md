@@ -19,40 +19,40 @@
 
 ## products テーブル
 
-| Column                  | Type   | Options                       |
-| ----------------------- | ------ |------------------------------ |
-| image                   | string | null: false                   |
-| item-name               | string | null: false                   |
-| item-info               | text   | null: false                   |
-| category.genre_id       | integer| null: false                   |
-| status.genre_id         | integer| null: false                   |
-| delivery-fee.genre_id   | integer| null: false                   |
-| area.genre_id           | integer| null: false                   |
-| shipping-days.genre_id  | integer| null: false                   |
-| price                   | integer| null: false                   |
-| user                    | string | null: false, foreign_key: true|
+| Column                  | Type      | Options                       |
+| ----------------------- | --------- |------------------------------ |
+| image                   | string    | null: false                   |
+| item_name               | string    | null: false                   |
+| item_info               | text      | null: false                   |
+| category_id             | integer   | null: false                   |
+| status_id               | integer   | null: false                   |
+| delivery_fee_id         | integer   | null: false                   |
+| prefectures_id          | integer   | null: false                   |
+| shipping_days_id        | integer   | null: false                   |
+| price                   | integer   | null: false                   |
+| user                    |references | null: false, foreign_key: true|
 
 ### Association
 
 - belongs_to :user
-- belongs_to :buy
+- has_one :buy
 
 ## buys テーブル
 
-| Column        | Type   | Options                        |
-| ------------- | ------ | ------------------------------ |
-| post-code     | string | null: false                    |
-| prefectures   | string | null: false                    |
-| city          | string | null: false                    |
-| block         | string | null: false                    |
-| building      | string |                                |
-| phone         | string | null: false                    |
+| Column           | Type   | Options                        |
+| ---------------- | ------ | ------------------------------ |
+| post-code        | string | null: false                    |
+| prefectures_id   | string | null: false                    |
+| city             | string | null: false                    |
+| block            | string | null: false                    |
+| building         | string |                                |
+| phone            | string | null: false                    |
 
 
 ### Association
 
-- belongs_to :user
-- belongs_to :product
+- has_one :user
+- has_one :product
 
 
 ##  managementテーブル

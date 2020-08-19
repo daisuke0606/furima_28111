@@ -22,8 +22,8 @@
 | Column                  | Type      | Options                       |
 | ----------------------- | --------- |------------------------------ |
 | image                   | string    | null: false                   |
-| item_name               | string    | null: false                   |
-| item_info               | text      | null: false                   |
+| name                    | string    | null: false                   |
+| info                    | text      | null: false                   |
 | category_id             | integer   | null: false                   |
 | status_id               | integer   | null: false                   |
 | delivery_fee_id         | integer   | null: false                   |
@@ -66,4 +66,5 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :products
+- belongs_to :product
+- belongs_to :address

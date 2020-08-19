@@ -1,24 +1,70 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column          | Type   | Options     |
+| --------------- | ------ | ----------- |
+| nickname        | string | null: false |
+| password        | string | null: false |
+| first-name      | string | null: false |
+| last-name       | string | null: false |
+| first-name-kana | string | null: false |
+| last-name-kana  | string | null: false |
+| birth           | date   | null: false |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :products
+- has_many :managements
 
-* Configuration
+## products テーブル
 
-* Database creation
+| Column                  | Type      | Options                       |
+| ----------------------- | --------- |------------------------------ |
+| image                   | string    | null: false                   |
+| name                    | string    | null: false                   |
+| info                    | text      | null: false                   |
+| category_id             | integer   | null: false                   |
+| status_id               | integer   | null: false                   |
+| delivery_fee_id         | integer   | null: false                   |
+| prefectures_id          | integer   | null: false                   |
+| shipping_days_id        | integer   | null: false                   |
+| price                   | integer   | null: false                   |
+| user                    |references | null: false, foreign_key: true|
 
-* Database initialization
+### Association
 
-* How to run the test suite
+- belongs_to :user
+- has_one :management
 
-* Services (job queues, cache servers, search engines, etc.)
+## address テーブル
 
-* Deployment instructions
+| Column           | Type   | Options                        |
+| ---------------- | ------ | ------------------------------ |
+| post-code        | string | null: false                    |
+| prefectures_id   | integer| null: false                    |
+| city             | string | null: false                    |
+| block            | string | null: false                    |
+| building         | string |                                |
+| phone            | string | null: false                    |
 
-* ...
+
+### Association
+
+- belongs_to :management
+
+
+
+##  managementテーブル
+
+| Column        | Type       | Options                        |
+| --------------| ---------- |--------------------------------|
+| user          | references | null: false, foreign_key: true |
+| product       | references | null: false, foreign_key: true |
+
+
+### Association
+
+- belongs_to :user
+- belongs_to :product
+- has_one :address

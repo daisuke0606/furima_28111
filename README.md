@@ -37,12 +37,12 @@
 - belongs_to :user
 - has_one :buy
 
-## buys テーブル
+## address テーブル
 
 | Column           | Type   | Options                        |
 | ---------------- | ------ | ------------------------------ |
 | post-code        | string | null: false                    |
-| prefectures_id   | string | null: false                    |
+| prefectures_id   | integer| null: false                    |
 | city             | string | null: false                    |
 | block            | string | null: false                    |
 | building         | string |                                |
@@ -53,14 +53,16 @@
 
 - has_one :user
 - has_one :product
+- has_one :management
+
 
 
 ##  managementテーブル
 
-| Column        | Type   | Options                        |
-| --------------| -------|--------------------------------|
-| user          | string | null: false, foreign_key: true |
-| item-name     | string | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| --------------| ---------- |--------------------------------|
+| user          | references | null: false, foreign_key: true |
+| item_name     | references | null: false, foreign_key: true |
 
 
 ### Association

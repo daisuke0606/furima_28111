@@ -9,9 +9,9 @@ class Item < ApplicationRecord
   # 空の投稿を保存できないようにする
   validates :category, presence: true
   validates :status, presence: true
-  validates :delivery_fee, presence: true
+  validates :delivery_fee_id, presence: true
   validates :prefectures, presence: true
-  validates :shipping_days, presence: true
+  validates :shipping_days_id, presence: true
 
   # 選択が「--」のままになっていないか
   with_options numericality: { other_than: 1 } do

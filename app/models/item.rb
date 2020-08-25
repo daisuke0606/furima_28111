@@ -6,12 +6,20 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefectures
   belongs_to_active_hash :shipping_days
 
+  MIN_NUM = 299
+
   # 空の投稿を保存できないようにする
-  validates :category, presence: true
-  validates :status, presence: true
-  validates :delivery_fee_id, presence: true
-  validates :prefectures, presence: true
-  validates :shipping_days_id, presence: true
+  with_options presence: true do
+    validates :category_id
+    validates :status_id
+    validates :delivery_fee_id
+    validates :prefectures_id
+    validates :shipping_days_id
+    validates :info
+    validates :name
+    validates :price, numericality: { greater_than: 299, less_than: 10_000_000 }
+    validates :image
+  end
 
   # 選択が「--」のままになっていないか
   with_options numericality: { other_than: 1 } do
@@ -21,4 +29,7 @@ class Item < ApplicationRecord
     validates :prefectures_id
     validates :shipping_days_id
   end
+
+  belongs_to :user
+  has_one_attached :image
 end

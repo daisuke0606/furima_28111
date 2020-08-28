@@ -34,7 +34,16 @@ class ItemsController < ApplicationController
   def edit
     @item = Item.find(params[:id])
   end
-  
+
+  def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      redirect_to root_path
+    else
+      render 'edit'
+    end
+  end
+
   private
 
   def item_params
@@ -43,7 +52,8 @@ class ItemsController < ApplicationController
       :name,
       :info,
       :category_id,
-      :status_id, :delivery_fee_id,
+      :status_id,
+      :delivery_fee_id,
       :prefectures_id,
       :shipping_days_id,
       :price

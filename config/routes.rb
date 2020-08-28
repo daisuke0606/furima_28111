@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'items#index'
   devise_for :users
-  resources :items, only: [:index, :new, :create, :show, :destroy, :edit]
+  resources :items, only: [:index, :new, :create, :show, :destroy, :edit, :update]
   get 'items', to: 'items#checked'
 end

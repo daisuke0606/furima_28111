@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
+  before_action :set_item, only: [:show, :edit]
   def index
     @items = Item.all.order('created_at DESC')
   end
@@ -19,16 +20,30 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+    
   end
+  
 
   def destroy
     item = Item.find(params[:id])
-     if item.destroy
+    if item.destroy
       redirect_to root_path
-     else
+    else
       render 'show'
-     end
+    end
+  end
+
+  def edit
+    
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      redirect_to root_path
+    else
+      render 'edit'
+    end
   end
 
   private
@@ -39,7 +54,8 @@ class ItemsController < ApplicationController
       :name,
       :info,
       :category_id,
-      :status_id, :delivery_fee_id,
+      :status_id,
+      :delivery_fee_id,
       :prefectures_id,
       :shipping_days_id,
       :price
@@ -48,5 +64,9 @@ class ItemsController < ApplicationController
 
   def move_to_index
     redirect_to action: :index unless user_signed_in?
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end

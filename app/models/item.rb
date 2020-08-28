@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefectures
   belongs_to_active_hash :shipping_days
 
-  MIN_NUM = 299
+  NAME_HARF_NAMBER = /\A[0-9]+\z/.freeze
 
   # 空の投稿を保存できないようにする
   with_options presence: true do
@@ -17,7 +17,8 @@ class Item < ApplicationRecord
     validates :shipping_days_id
     validates :info
     validates :name
-    validates :price, numericality: { greater_than: 299, less_than: 10_000_000 }
+    validates :price, numericality: { greater_than: 299, less_than: 10_000_000 },
+                      format: { with: NAME_HARF_NAMBER, message: 'には半角数字に設定してください' }
     validates :image
   end
 

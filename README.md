@@ -40,15 +40,15 @@
 
 ## addresses テーブル
 
-| Column           | Type   | Options                        |
-| ---------------- | ------ | ------------------------------ |
-| post-code        | string | null: false                    |
-| prefectures_id   | integer| null: false                    |
-| city             | string | null: false                    |
-| block            | string | null: false                    |
-| building         | string |                                |
-| phone            | string | null: false                    |
-| order_id         | integer| null: false, foreign_key: true |
+| Column           | Type      | Options                        |
+| ---------------- | --------- | ------------------------------ |
+| post_code        | string    | null: false                    |
+| prefectures_id   | integer   | null: false                    |
+| city             | string    | null: false                    |
+| block            | string    | null: false                    |
+| building         | string    |                                |
+| phone            | string    | null: false                    |
+| order            | references| null: false, foreign_key: true |
 
 ### Association
 

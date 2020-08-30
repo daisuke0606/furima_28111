@@ -16,7 +16,7 @@
 ### Association
 
 - has_many :items
-- has_many :managements
+- has_many :orders
 
 ## items テーブル
 
@@ -35,10 +35,10 @@
 ### Association
 
 - belongs_to :user
-- has_one :management
+- has_one :order
 - has_one_attached :image
 
-## address テーブル
+## addresses テーブル
 
 | Column           | Type   | Options                        |
 | ---------------- | ------ | ------------------------------ |
@@ -52,11 +52,11 @@
 
 ### Association
 
-- belongs_to :management
+- belongs_to :order
 
 
 
-##  managementテーブル
+##  ordersテーブル
 
 | Column        | Type       | Options                        |
 | --------------| ---------- |--------------------------------|

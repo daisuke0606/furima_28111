@@ -48,7 +48,7 @@
 | block            | string | null: false                    |
 | building         | string |                                |
 | phone            | string | null: false                    |
-
+| order_id         | integer| null: false, foreign_key: true |
 
 ### Association
 

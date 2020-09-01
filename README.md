@@ -16,7 +16,7 @@
 ### Association
 
 - has_many :items
-- has_many :managements
+- has_many :orders
 
 ## items テーブル
 
@@ -35,28 +35,28 @@
 ### Association
 
 - belongs_to :user
-- has_one :management
+- has_one :order
 - has_one_attached :image
 
-## address テーブル
+## addresses テーブル
 
-| Column           | Type   | Options                        |
-| ---------------- | ------ | ------------------------------ |
-| post-code        | string | null: false                    |
-| prefectures_id   | integer| null: false                    |
-| city             | string | null: false                    |
-| block            | string | null: false                    |
-| building         | string |                                |
-| phone            | string | null: false                    |
-
+| Column           | Type      | Options                        |
+| ---------------- | --------- | ------------------------------ |
+| post_code        | string    | null: false                    |
+| prefectures_id   | integer   | null: false                    |
+| city             | string    | null: false                    |
+| block            | string    | null: false                    |
+| building         | string    |                                |
+| phone            | string    | null: false                    |
+| order            | references| null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :management
+- belongs_to :order
 
 
 
-##  managementテーブル
+##  ordersテーブル
 
 | Column        | Type       | Options                        |
 | --------------| ---------- |--------------------------------|

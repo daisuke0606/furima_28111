@@ -23,7 +23,7 @@ class Item < ApplicationRecord
   end
 
   # 選択が「--」のままになっていないか
-  with_options numericality: { other_than: 1 } do
+  with_options numericality: { other_than: 0 } do
     validates :category_id
     validates :status_id
     validates :delivery_fee_id
@@ -33,4 +33,5 @@ class Item < ApplicationRecord
 
   belongs_to :user
   has_one_attached :image
+  has_one :order
 end

@@ -20,9 +20,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    
   end
-  
 
   def destroy
     item = Item.find(params[:id])
@@ -34,7 +32,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    
   end
 
   def update

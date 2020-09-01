@@ -29,25 +29,21 @@ class OrdersController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = "sk_test_3db54a6573b6b32a74e4733f"  # PAY.JPテスト秘密鍵
+    Payjp.api_key = 'sk_test_3db54a6573b6b32a74e4733f'  # PAY.JPテスト秘密鍵
     Payjp::Charge.create(
       amount: @item.price,
-      card: order_params[:token],    # カードトークン
-      currency:'jpy'                 # 通貨の種類(日本円)
+      card: order_params[:token], # カードトークン
+      currency: 'jpy'                 # 通貨の種類(日本円)
     )
   end
 
   def user_item
     item = Item.find(params[:item_id])
-    if current_user.id == item.user_id
-      redirect_to root_path
-    end
+    redirect_to root_path if current_user.id == item.user_id
   end
 
   def re_item
     item = Item.find(params[:item_id])
-    if item.order != nil 
-      redirect_to root_path
-    end
+    redirect_to root_path unless item.order.nil?
   end
 end

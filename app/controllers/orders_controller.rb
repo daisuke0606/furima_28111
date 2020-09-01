@@ -39,11 +39,15 @@ class OrdersController < ApplicationController
 
   def user_item
     item = Item.find(params[:item_id])
-    redirect_to root_path if current_user.id == item.user_id
+      if current_user.id == item.user_id
+        redirect_to root_path
+      end
   end
 
   def re_item
     item = Item.find(params[:item_id])
-    redirect_to root_path unless item.order.nil?
+      unless item.order.nil?
+        redirect_to root_path
+      end
   end
 end
